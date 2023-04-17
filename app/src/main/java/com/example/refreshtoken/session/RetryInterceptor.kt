@@ -27,7 +27,7 @@ class RetryInterceptor(val context: Context): Interceptor {
         val retryMaxCount = 2
         var retryCount = 0
 
-        while (response.isSuccessful && retryCount < retryMaxCount) {
+        while (!response.isSuccessful && retryCount < retryMaxCount) {
             // not to check until finish refreshing
             if (TokenManager.isRefreshing) {
                 continue
